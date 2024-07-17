@@ -1,0 +1,57 @@
+#include <stdio.h>
+
+// Función para calcular el factorial de un número
+long long factorial(int n) {
+    long long result = 1;
+    for (int i = 1; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}
+
+// Función para calcular la combinación de n elementos tomados k a k
+long long combinacion(int n, int k) {
+    return factorial(n) / (factorial(k) * factorial(n - k));
+}
+
+// Función para calcular la permutación de n elementos tomados k a k
+long long permutacion(int n, int k) {
+    return factorial(n) / factorial(n - k);
+}
+
+int main() {
+    int opcion, n, k;
+
+    do {
+        printf("Menú:\n");
+        printf("1. Calcular combinación\n");
+        printf("2. Calcular permutación\n");
+        printf("3. Salir\n");
+        printf("Ingrese una opción: ");
+        scanf("%d", &opcion);
+
+        switch (opcion) {
+            case 1:
+                printf("Ingrese el valor de n: ");
+                scanf("%d", &n);
+                printf("Ingrese el valor de k: ");
+                scanf("%d", &k);
+                printf("Combinación de %d elementos tomados %d a %d: %lld\n", n, k, k, combinacion(n, k));
+                break;
+            case 2:
+                printf("Ingrese el valor de n: ");
+                scanf("%d", &n);
+                printf("Ingrese el valor de k: ");
+                scanf("%d", &k);
+                printf("Permutación de %d elementos tomados %d a %d: %lld\n", n, k, k, permutacion(n, k));
+                break;
+            case 3:
+                printf("Saliendo...\n");
+                break;
+            default:
+                printf("Opción inválida. Intente nuevamente.\n");
+        }
+    } while (opcion != 3);
+
+    return 0;
+}
